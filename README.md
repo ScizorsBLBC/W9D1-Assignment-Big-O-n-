@@ -22,27 +22,43 @@
 
 ### Optimization (Binary Search):
 ```
-def binary_search(arr, target):
+def linear_search(arr, target):
     """
-        Performs binary search to find the index of the target in a sorted array.
+        Performs linear search to find the index of the target in the array.
 
         Args:
-            arr: The sorted array to search in.
+            arr: The unsorted array to search in.
             target: The value to search for.
 
         Returns:
-            The index of the target, or -1 if not found.
+            The index of the first occurrence of the target, or -1 if not found.
     """
-    low, high = 0, len(arr) - 1
-    while low <= high:
-        mid = low + (high - low) // 2
-        if arr[mid] == target:
-            return mid
-        elif arr[mid] < target:
-            low = mid + 1
-        else:
-            high = mid - 1
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
     return -1
+
+array = [10, 23, 45, 70, 11, 15]
+target = 70
+print(f"Index of {target}: {linear_search(array, target)}")  # Output: 3
+
+target = 11
+print(f"Index of {target}: {linear_search(array, target)}")  # Output: 4
+
+target = 99
+print(f"Index of {target}: {linear_search(array, target)}")  # Output: -1
+
+# Sort a copy of the array for binary search
+sorted_array = sorted(array.copy())
+
+# Test Cases (using the original and sorted arrays)
+
+targets = [70, 11, 99]
+for target in targets:
+    linear_result = linear_search(array, target)
+    binary_result = binary_search(sorted_array, target, array) # Pass the original array to binary_search
+    print(f"Binary Search Index of {target}: {binary_result}")
+
 ```
 ### Time Complexity: 
 - O(log n)
