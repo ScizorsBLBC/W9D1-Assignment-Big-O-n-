@@ -47,7 +47,7 @@ print(f"Index of {target}: {linear_search(array, target)}")  # Output: 4
 
 target = 99
 print(f"Index of {target}: {linear_search(array, target)}")  # Output: -1
-
+ 
 # Sort a copy of the array for binary search
 sorted_array = sorted(array.copy())
 
